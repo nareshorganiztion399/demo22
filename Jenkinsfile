@@ -3,7 +3,12 @@ properties([
     [$class: 'GithubProjectProperty',
     displayName: '',
     projectUrlStr: 'https://github.com/nareshorganiztion399/demo22/'],
-    pipelineTriggers([githubPush()])])
+    pipelineTriggers([
+     upstream(
+     threshold: 'SUCCESS',
+     upstreamProjects: 'https://github.com/nareshorganiztion399/demo11.git')
+     ])
+    ])
 
 node {
  stage 'build'
